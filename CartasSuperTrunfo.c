@@ -4,19 +4,21 @@
 // Tema 1 - Cadastro das Cartas
 // Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
 // Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
+// Teste larissa
 
-int main() {
-     // variaveis para armazenar os dados das cartas
+int main()
+{
+    // variaveis para armazenar os dados das cartas
     char estado1[20], estado2[20];
     char nomeCidade1[50], nomeCidade2[50];
     char codigo1[4], codigo2[4];
-    int populacao1, populacao2;
+    unsigned long int populacao1, populacao2;
     int pontos_turisticos1, pontos_turisticos2;
     float area1, area2;
     float pib1, pib2;
     float densidade_populacional1, densidade_populacional2;
     float pib_per_capita1, pib_per_capita2;
+    float super_poder1, super_poder2;
 
     // Entrada de dados para a primeira carta
     printf("Digite o estado da primeira carta: \n");
@@ -29,7 +31,7 @@ int main() {
     scanf(" %[^\n]s", &nomeCidade1);
 
     printf("Digite a população: \n");
-    scanf("%d", &populacao1);
+    scanf("%lu", &populacao1);
 
     printf("Digite a área: \n");
     scanf("%f", &area1);
@@ -51,7 +53,7 @@ int main() {
     scanf(" %[^\n]s", &nomeCidade2);
 
     printf("Digite a população: \n");
-    scanf("%d", &populacao2);
+    scanf("%lu", &populacao2);
 
     printf("Digite a área: \n");
     scanf("%f", &area2);
@@ -69,29 +71,18 @@ int main() {
     pib_per_capita1 = (pib1 * 1000000000) / populacao1;
     pib_per_capita2 = (pib2 * 1000000000) / populacao2;
 
-    // Exibição dos dados da primeira carta
-    printf("\n--- Carta 1 ---\n");
-    printf("Estado: %s\n", estado1);
-    printf("Código: %s\n", codigo1);
-    printf("Cidade: %s\n", nomeCidade1);
-    printf("População: %d\n", populacao1);
-    printf("Área: %.2f km²\n", area1);
-    printf("PIB: %.2f bilhões de reais\n", pib1);
-    printf("Pontos Turisticos: %d\n", pontos_turisticos1);
-    printf("Densidade Populacional: %.2f hab/km²\n", densidade_populacional1);
-    printf("PIB Per Capita: %.2freais\n", pib_per_capita1);
+    super_poder1 = populacao1 + area1 + pib1 + pontos_turisticos1 + pib_per_capita1 + (1.0 / densidade_populacional1);
+    super_poder2 = populacao2 + area2 + pib2 + pontos_turisticos2 + pib_per_capita2 + (1.0 / densidade_populacional2);
 
-    // Exibição dos dados da segunda carta
-    printf("\n--- Cartas 2 ---\n");
-    printf("Estado: %s\n", estado2);
-    printf("Código: %s\n", codigo2);
-    printf("Cidade: %s\n", nomeCidade2);
-    printf("População: %d\n", populacao2);
-    printf("Área: %.2fkm²\n", area2);
-    printf("PIB: %.2f bilhões de reais\n", pib2);
-    printf("Pontos Turisticos: %d\n", pontos_turisticos2);
-    printf("Densidade Populacional: %.2f hab/km²\n", densidade_populacional2);
-    printf("PIB Per Capita: %.2f reais\n", pib_per_capita2);
+    // Comparação e exibição dos resultados
+    printf("\nComparação de Cartas: \n");
+    printf("População: carta %d venceu\n", populacao1 > populacao2 ? 1 : 2);
+    printf("Area: carta %d venceu\n", area1 > area2 ? 1 : 2);
+    printf("PIB: carta %d venceu\n", pib1 > pib2 ? 1 : 2);
+    printf("Pontos turisticos: carta %d venceu\n", pontos_turisticos1 > pontos_turisticos2 ? 1 : 2);
+    printf("Densidade populacional: carta %d venceu\n", densidade_populacional1 > densidade_populacional2 ? 1 : 2);
+    printf("PIB per capita: carta %d venceu\n", pib_per_capita1 > pib_per_capita2 ? 1 : 2);
+    printf("Super poder: carta %d venceu\n", super_poder1 > super_poder2 ? 1 : 2);
 
     return 0;
 }
